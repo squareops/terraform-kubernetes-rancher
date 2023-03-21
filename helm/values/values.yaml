@@ -1,0 +1,49 @@
+## Custom annotations for rancher ingress
+
+ingress:
+  extraAnnotations:
+    kubernetes.io/ingress.class: "nginx"
+    # nginx.ingress.kubernetes.io/enable-modsecurity: "true"
+    # nginx.ingress.kubernetes.io/modsecurity-snippet: |
+    #   SecRuleEngine On
+    #   SecRequestBodyAccess On
+    #   SecAuditEngine RelevantOnly
+    #   SecAuditLogParts ABIJDEFHZ
+    #   SecAuditLog /var/log/modsec_audit.log
+    #   SecRule REQUEST_HEADERS:User-Agent "fern-scanner" "log,deny,id:107,status:403,msg:\'Fern Scanner Identified\'"
+    #   Include /etc/nginx/owasp-modsecurity-crs/nginx-modsecurity.conf
+    # kubernetes.io/ingress.class: "alb"
+  tls:
+    source: letsEncrypt
+
+## Ingress class for Issuer
+
+letsEncrypt:
+  email: ${email}
+  environment: production
+  ingress:
+    class: nginx
+
+# Fully qualified name to reach your Rancher server
+hostname: ${hostname}
+
+## Using limits and requests
+
+resources:
+  limits:
+    cpu: 800m
+    memory: 3Gi
+  requests:
+    cpu: 100m
+    memory: 500Mi
+
+bootstrapPassword: ${bootstrapPassword}
+
+nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: "Infra-Services"
+          operator: In
+          values:
+          - "true"
