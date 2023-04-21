@@ -1,16 +1,16 @@
 locals {
-  region = "us-east-2"
+  region = "ap-south-1"
   additional_tags = {
-    Name        = "skaf"
-    environment = "prod"
+    name        = "test"
+    environment = "squareops"
   }
 }
 
 module "rancher" {
   source = "../../"
   rancher_config = {
-    hostname    = "rancher.squareops.in"
-    email       = "email@email.com"
+    email       = "rohit.kumar@squareops.com"
+    hostname    = "rancher.ref.dev.skaf.squareops.in"
     values_yaml = file("./helm/values.yaml")
   }
 }

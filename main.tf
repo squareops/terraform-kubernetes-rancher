@@ -15,14 +15,14 @@ resource "helm_release" "rancher" {
 
   name      = "rancher"
   chart     = "${path.module}/helm/chart/"
-  namespace = var.namespace
   timeout   = 600
   version   = var.chart_version
+  namespace = var.namespace
 
   values = [
     templatefile("${path.module}/helm/values/values.yaml", {
-      hostname          = "${var.rancher_config.hostname}",
       email             = "${var.rancher_config.email}",
+      hostname          = "${var.rancher_config.hostname}",
       bootstrapPassword = "${random_password.rancher_password.result}"
     }),
     var.rancher_config.values_yaml
