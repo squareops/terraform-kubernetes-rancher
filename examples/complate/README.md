@@ -38,6 +38,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | Initial admin password. Prompts for change on initial login. |
-| <a name="output_username"></a> [username](#output\_username) | Username |
+| <a name="output_rancher_credentials"></a> [rancher\_credentials](#output\_rancher\_credentials) | Rancher\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

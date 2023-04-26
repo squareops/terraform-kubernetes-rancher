@@ -47,3 +47,17 @@ nodeAffinity:
           operator: In
           values:
           - "true"
+
+postDelete:
+  enabled: true
+  image:
+    repository: rancher/shell
+    tag: v0.1.18
+
+
+global:
+  cattle:
+    psp:
+      enabled: false #PSPs enablement should default to true
+
+rancherImageTag: v2.7-head

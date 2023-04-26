@@ -3,7 +3,6 @@ apiVersion: apps/v1
 metadata:
   name: {{ template "rancher.fullname" . }}
   annotations:
-    co.elastic.logs/enabled: "true"
 {{- if (lt (int .Values.replicas) 0) }}
     management.cattle.io/scale-available: "{{ sub 0 (int .Values.replicas)}}"
 {{- end  }}
@@ -32,7 +31,7 @@ spec:
         release: {{ .Release.Name }}
     spec:
       priorityClassName: {{ .Values.priorityClassName }}
-      serviceAccountName:  {{ template "rancher.fullname" . }}
+      serviceAccountName: {{ template "rancher.fullname" . }}
 {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 6 }}
@@ -60,10 +59,9 @@ spec:
                   - {{ template "rancher.fullname" . }}
               topologyKey: {{ .Values.topologyKey | default "kubernetes.io/hostname" }}
 {{- end }}
-        {{- with .Values.NodeAffinity }}
         nodeAffinity:
-          {{- toYaml . | nindent 12 }}
-        {{- end }}
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms: {{ include "linux-node-selector-terms" . | nindent 14 }}
       tolerations: {{ include "linux-node-tolerations" . | nindent 8 }}
       containers:
       - image: {{ .Values.rancherImage }}:{{ default .Chart.AppVersion .Values.rancherImageTag }}
@@ -149,14 +147,22 @@ spec:
           httpGet:
             path: /healthz
             port: 80
-          initialDelaySeconds: 60
-          periodSeconds: 30
+          initialDelaySeconds: {{.Values.livenessProbe.initialDelaySeconds | default 60 }}
+          periodSeconds: {{ .Values.livenessProbe.periodSeconds | default 30 }}
         readinessProbe:
           httpGet:
             path: /healthz
             port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 30
+          initialDelaySeconds: {{.Values.readinessProbe.initialDelaySeconds | default  5}}
+          periodSeconds: {{ .Values.readinessProbe.periodSeconds | default 30}}
+{{- if .Values.startupProbe }}
+        startupProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          failureThreshold: {{.Values.startupProbe.failureThreshold | default 1}}
+          periodSeconds: {{ .Values.startupProbe.periodSeconds | default 30}}
+{{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:

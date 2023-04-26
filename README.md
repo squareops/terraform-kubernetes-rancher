@@ -58,7 +58,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Chart version | `string` | `"2.7.0"` | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Chart version | `string` | `"2.7.2"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace name | `string` | `"cattle-system"` | no |
 | <a name="input_rancher_config"></a> [rancher\_config](#input\_rancher\_config) | Rancher configurations | `any` | <pre>{<br>  "email": "",<br>  "hostname": "",<br>  "values_yaml": ""<br>}</pre> | no |
 
@@ -66,8 +66,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_initial_admin_password"></a> [initial\_admin\_password](#output\_initial\_admin\_password) | Initial admin password. Prompts for change on initial login. |
-| <a name="output_user_name"></a> [user\_name](#output\_user\_name) | User name |
+| <a name="output_rancher"></a> [rancher](#output\_rancher) | Rancher\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contribution & Issue Reporting

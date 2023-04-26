@@ -1,8 +1,8 @@
 variable "rancher_config" {
   type = any
   default = {
-    hostname    = ""
     email       = ""
+    hostname    = ""
     values_yaml = ""
   }
   description = "Rancher configurations"
@@ -16,7 +16,6 @@ variable "namespace" {
 
 variable "chart_version" {
   type        = string
-  default     = "2.7.0"
+  default     = "2.7.2"
   description = "Chart version"
-
 }

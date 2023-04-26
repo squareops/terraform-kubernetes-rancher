@@ -1,9 +1,4 @@
-output "username" {
-  description = "Username"
-  value       = module.rancher.user_name
-}
-
-output "admin_password" {
-  description = "Initial admin password. Prompts for change on initial login."
-  value       = module.rancher.initial_admin_password
+output "rancher_credentials" {
+  description = "Rancher_Info"
+  value       = module.rancher.rancher
 }
