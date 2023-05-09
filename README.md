@@ -12,10 +12,10 @@ This module is compatible with EKS version 1.23, which is great news for users d
 
 ## Supported Versions Table:
 
-| Resources             |  Helm Chart Version           |     K8s supported version   |      
-| :-----:              | :-----:                       |         :---         | 
-| Rancher       | **2.7.0**          |    1.23,1.24       |
-| Rancher       | **2.7.2**          |    1.23,1.24,1.25      |
+| Rancher Helm Chart Version       |     K8s supported version   |      
+ | :-----:                       |         :---         | 
+ | **2.7.0**          |    1.23,1.24       |
+ | **2.7.2**          |    1.23,1.24,1.25      |
 
 ## Usage Example
 
