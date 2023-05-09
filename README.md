@@ -9,6 +9,14 @@
 
 ## Important Notes:
 This module is compatible with EKS version 1.23, which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+
+## Supported Versions Table:
+
+| Resources             |  Helm Chart Version           |     K8s supported version   |      
+| :-----:              | :-----:                       |         :---         | 
+| Rancher       | **2.7.0**          |    1.23,1.24       |
+| Rancher       | **2.7.2**          |    1.23,1.24,1.25      |
+
 ## Usage Example
 
 ```hcl
