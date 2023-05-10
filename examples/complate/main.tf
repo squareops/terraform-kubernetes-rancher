@@ -1,16 +1,19 @@
 locals {
-  region = "ap-south-1"
+  region = "us-east-2"
   additional_tags = {
-    name        = "test"
-    environment = "squareops"
+    Name        = "rancher"
+    Owner       = "organization_name"
+    Expires     = "Never"
+    environment = "prod"
+    Department  = "Engineering"
   }
 }
 
 module "rancher" {
-  source = "../../"
+  source = "https://github.com/sq-ia/terraform-kubernetes-jenkins.git"
   rancher_config = {
     email       = "rohit.kumar@squareops.com"
-    hostname    = "rancher.ref.dev.skaf.squareops.in"
+    hostname    = "rancher.squareops.in"
     values_yaml = file("./helm/values.yaml")
   }
 }
