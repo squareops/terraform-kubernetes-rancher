@@ -27,11 +27,11 @@ This module is compatible with EKS version 1.23, which is great news for users d
 
 ```hcl
 module "rancher" {
-  source = "../../"
+  source         = "https://github.com/sq-ia/terraform-kubernetes-rancher.git"
   rancher_config = {
     hostname = "rancher.squareops.in"
     email    = "email@email.com"
-    values_yaml = file("./helm/values.yaml")
+    values_yaml = ""
   }
 }
 
