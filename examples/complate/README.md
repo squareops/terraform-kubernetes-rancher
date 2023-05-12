@@ -21,7 +21,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_rancher"></a> [rancher](#module\_rancher) | ../../ | n/a |
+| <a name="module_rancher"></a> [rancher](#module\_rancher) | https://github.com/sq-ia/terraform-kubernetes-rancher.git | n/a |
 
 ## Resources
 
