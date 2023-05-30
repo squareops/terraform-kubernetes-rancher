@@ -10,10 +10,10 @@ locals {
 }
 
 module "rancher" {
-  source = "https://github.com/sq-ia/terraform-kubernetes-rancher.git"
+  source = "squareops/rancher/kubernetes"
   rancher_config = {
     email       = "email@email.com"
-    hostname    = "rancher.squareops.in"
+    hostname    = "rancher.prod.in"
     values_yaml = file("./helm/values.yaml")
   }
 }
