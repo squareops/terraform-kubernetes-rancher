@@ -1,5 +1,4 @@
 resource "kubernetes_namespace" "cattle_system" {
-
   metadata {
     name = var.namespace
   }
@@ -12,12 +11,11 @@ resource "random_password" "rancher_password" {
 
 resource "helm_release" "rancher" {
   depends_on = [kubernetes_namespace.cattle_system]
-
-  name      = "rancher"
-  chart     = "${path.module}/helm/chart/"
-  timeout   = 600
-  version   = var.chart_version
-  namespace = var.namespace
+  name       = "rancher"
+  chart      = "${path.module}/helm/chart/"
+  timeout    = 600
+  version    = var.chart_version
+  namespace  = var.namespace
 
   values = [
     templatefile("${path.module}/helm/values/values.yaml", {
