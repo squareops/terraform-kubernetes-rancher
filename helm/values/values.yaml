@@ -39,14 +39,7 @@ resources:
 
 bootstrapPassword: ${bootstrapPassword}
 
-nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: "Infra-Services"
-          operator: In
-          values:
-          - "true"
+nodeAffinity: {}
 
 postDelete:
   enabled: true
