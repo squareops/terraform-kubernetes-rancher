@@ -1,9 +1,9 @@
 apiVersion: v2
 name: rancher
 description: Install Rancher Server to manage Kubernetes clusters across providers.
-version: v2.7.2
-appVersion: v2.7.2  #%APP_VERSION%
-kubeVersion: < 1.26.0-0
+version: v2.7.5-rc6
+appVersion: v2.7.5-rc6  #%APP_VERSION%
+kubeVersion: < 1.27.0-0
 home: https://rancher.com
 icon: https://github.com/rancher/ui/blob/master/public/assets/images/logos/welcome-cow.svg
 keywords:
