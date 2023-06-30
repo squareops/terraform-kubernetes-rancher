@@ -16,6 +16,6 @@ variable "namespace" {
 
 variable "chart_version" {
   type        = string
-  default     = "2.7.2"
-  description = "Version of the Jenkins chart that will be used to deploy Rancher application."
+  default     = "2.7.5-rc5"
+  description = "Version of the Rancher chart that will be used to deploy Rancher application."
 }
